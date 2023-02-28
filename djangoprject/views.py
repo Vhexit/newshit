@@ -8,5 +8,5 @@ def index_page(request):
 def edit_page(request):
     return render(request, 'edit.html')
 
-def register_page(request):
-    return render(request, 'register.html')
+def signup_page(request):
+    return render(request, 'signup.html')
