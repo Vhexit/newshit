@@ -19,5 +19,7 @@ from .import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registeruser/', views.register_page, name='registeruser')
+    path('', views.index_page, name='index'),
+    path('', views.edit_page, name='edit'),
+    path('', views.register_page, name='register')
 ]
