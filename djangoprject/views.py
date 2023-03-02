@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
-from . models import Student
+from .models import Student
 
 
 def index_page(request):
@@ -10,8 +10,10 @@ def index_page(request):
     context = {'data': data}
     return render(request, "index.html", context)
 
+
 def edit_page(request):
     return render(request, 'edit.html')
+
 
 def signup_page(request):
     return render(request, 'signup.html')
@@ -25,8 +27,7 @@ def insertData(request):
         gender = request.POST.get('gender')
         phone = request.POST.get('phone')
 
-
-        query = Student(name=name, email=email,age=age,gender=gender,phone=phone)
+        query = Student(name=name, email=email, age=age, gender=gender, phone_num=phone)
         query.save()
         return redirect("/")
 
