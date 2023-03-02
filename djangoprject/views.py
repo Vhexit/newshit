@@ -42,7 +42,27 @@ def deleteData(request, id):
     return render(request, "index.html")
 
 def updateData(request, id):
-    d = Student.objects.get(id=id)
-    d.update()
-    return redirect("/")
-    return render(request, "index.html")
+   if request.method == "POST":
+       name = request.POST.get('name')
+       email = request.POST.get('email')
+       age = request.POST.get('age')
+       gender = request.POST.get('gender')
+       phone = request.POST.get('phone')
+       city = request.POST.get('city')
+       country = request.POST.get('country')
+
+       update_info = Student.objects.get(id=id)
+       update_info.name = name
+       update_info.email = email
+       update_info.age = age
+       update_info.gender = gender
+       update_info.phone = phone
+       update_info.city = city
+       update_info.country = country
+
+       update_info.save()
+       return redirect("/")
+
+   d = Student.objects.get(id=id)
+        context = {"d" d}
+        return render(request, "edit.html", context)
