@@ -26,9 +26,23 @@ def insertData(request):
         age = request.POST.get('age')
         gender = request.POST.get('gender')
         phone = request.POST.get('phone')
+        city = request.POST.get('city')
+        country = request.POST.get('country')
 
-        query = Student(name=name, email=email, age=age, gender=gender, phone_num=phone)
+        query = Student(name=name, email=email, age=age, gender=gender, phone=phone, city=city, country=country)
         query.save()
         return redirect("/")
 
+    return render(request, "index.html")
+
+def deleteData(request, id):
+    d = Student.objects.get(id=id)
+    d.delete()
+    return redirect("/")
+    return render(request, "index.html")
+
+def updateData(request, id):
+    d = Student.objects.get(id=id)
+    d.update()
+    return redirect("/")
     return render(request, "index.html")

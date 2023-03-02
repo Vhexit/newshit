@@ -22,5 +22,9 @@ urlpatterns = [
     path('', views.index_page, name='index'),
     path('', views.edit_page, name='edit'),
     path('', views.signup_page, name='register'),
-    path('insert', views.insertData, name='insertdata')
+    path('insert', views.insertData, name='insertData'),
+    path('delete/<id>', views.deleteData, name='deleteData'),
+    path('update/<id>', views.updateData, name='updateData')
+
+
 ]
